@@ -1,24 +1,37 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { Route, Redirect, Switch } from 'react-router-dom';
+import NavBar from './components/navBar';
+import Inicio from './components/inicio';
+import Global from './components/globalizadores';
+import Aerolinea from './components/aerolineas';
+import OnlineAgency from './components/onlineAgency';
+import GuiaViaje from './components/guiasViaje';
+import AgenciasViaje from './components/agenciasViaje';
+import NotFound from './components/notFound';
+import Footer from './components/footer';
+import BootstrapCarousel from './components/sliderBootstrap';
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavBar />
+      <BootstrapCarousel />
+      <main>
+        <Switch>
+          <Route path="/globalizadores" component={Global} />
+          <Route path="/aerolineas" component={Aerolinea} />
+          <Route path="/online-travel-agency" component={OnlineAgency} />
+          <Route path="/guias-viaje" component={GuiaViaje}  />
+          <Route path="/agencias-viaje" component={AgenciasViaje} />
+          <Route path="/inicio" component={Inicio}/>
+          <Redirect from="/" exact to="/inicio" />
+          <Route to="/not-found" />
+        </Switch>
+      </main>
+      <Footer />
+    </>
   );
 }
 
