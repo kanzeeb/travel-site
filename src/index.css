@@ -87,7 +87,7 @@ a {
 }
 .block__B {
   margin: 0;
-  padding: 0 1rem;
+  padding: 0 2rem;
 }
 .block__header {
   margin: 0 auto;
@@ -98,6 +98,7 @@ a {
   margin: 0 auto;
   max-width: 1140px;
 }
+
 /* Block end*/
 /* Cards*/
 .card {
@@ -345,6 +346,7 @@ a {
 /* Grids */
 .grid {
   display: grid;
+  padding: 0 2rem;
 }
 .grid__brands {
   align-items: center;
@@ -352,6 +354,7 @@ a {
   grid-gap: 1.6rem 1rem;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
+  padding: 0 2rem;
   text-align: center;
 }
 .grid__brandsSection {
@@ -374,6 +377,9 @@ a {
   text-align: center;
 }
 @media screen and (min-width: 800px) {
+  .grid {
+    padding: 0;
+  }
   .grid--2-cols {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -491,6 +497,7 @@ a {
 .icon {
   height: 40px;
   width: 40px;
+  text-align: left;
 }
 
 .icon--small {
@@ -519,6 +526,22 @@ a {
   background-color: var(--color-accent);
 }
 /* Icon end*/
+/* Items */
+.item__hide {
+  display: none;
+}
+.item__deskhide {
+  display: block;
+}
+@media screen and (min-width: 800px) {
+  .item__hide {
+    display: block;
+  }
+  .item__deskhide {
+    display: none;
+  }
+}
+/* Items end */
 /* Main*/
 .main__container {
   background: rgb(180, 197, 207);
@@ -555,7 +578,7 @@ a {
   background-color: var(--color-head);
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: stretch;
   padding: 2rem 0;
 }
 .navBar ul {
@@ -563,8 +586,9 @@ a {
 }
 .nav__list {
   font-size: 2.3rem;
-  height: 25rem;
+  height: fit-content;
   margin: 0;
+  max-height: 100%;
   width: 100%;
 }
 .nav__logo {
@@ -615,6 +639,7 @@ a {
   }
   .navBar {
     flex-wrap: wrap;
+    justify-content: space-evenly;
     padding-top: 2rem;
   }
   .nav__toggler {

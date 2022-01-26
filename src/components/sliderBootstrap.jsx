@@ -3,7 +3,7 @@ import Carousel from 'react-bootstrap/Carousel';
 class BootstrapCarousel extends Component {  
         render() {    
             return (  
-                <Carousel fade={true} interval={8000} touch={true}>
+                <Carousel fade={true} interval={8000} touch={true} indicators={true}>
                 <Carousel.Item>
                   <img
                     className="d-block w-100"
@@ -12,7 +12,7 @@ class BootstrapCarousel extends Component {
                   />
                   <Carousel.Caption>
                     <h3>Sunt in culpa qui officia deserunt mollit anim</h3>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                    <p className='item__hide'>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                   </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -24,7 +24,7 @@ class BootstrapCarousel extends Component {
               
                   <Carousel.Caption>
                     <h3>Fringilla est ullamcorper eget</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p className='item__hide'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                   </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -36,7 +36,7 @@ class BootstrapCarousel extends Component {
               
                   <Carousel.Caption>
                     <h3>Magna fringilla urna porttitor rhoncus</h3>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    <p className='item__hide'>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                   </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -48,7 +48,7 @@ class BootstrapCarousel extends Component {
               
                   <Carousel.Caption>
                     <h3>Pretium aenean pharetra magna ac placerat vestibulum</h3>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    <p className='item__hide'>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                   </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -60,7 +60,7 @@ class BootstrapCarousel extends Component {
               
                   <Carousel.Caption>
                     <h3>sit amet nulla facilisi morbi tempus</h3>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                    <p className='item__hide'>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                   </Carousel.Caption>
                 </Carousel.Item>
               </Carousel>      

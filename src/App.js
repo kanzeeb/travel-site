@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 import NavBar from './components/navBar';
 import Inicio from './components/inicio';
@@ -27,6 +27,7 @@ function App() {
           <Route path="/agencias-viaje" component={AgenciasViaje} />
           <Route path="/inicio" component={Inicio}/>
           <Redirect from="/" exact to="/inicio" />
+          <Redirect from="/travel-site" exact to="/inicio" />
           <Route to="/not-found" />
         </Switch>
       </main>
