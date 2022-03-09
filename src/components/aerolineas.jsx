@@ -1,12 +1,22 @@
-import React from "react";
+import React, { Component } from "react";
+import { getAerolineas, getAerolineasInter, getAerolineasInterBajoCosto } from "../services/fakeAerolineas";
 
-const Aerolinea = () => {
+class Aerolinea extends Component {
+    state = {
+        aerolineasNacionales: [],
+        aerolineasInterBajoCosto: [],
+        aerolineasInter: []
+    }
+    componentDidMount() {
+        this.setState({aerolineasNacionales:getAerolineas(), aerolineasInterBajoCosto:getAerolineasInterBajoCosto(), aerolineasInter:getAerolineasInter()})
+    }
+    render() {
     return(
         <>
             <section className="block__B container">
                 <article className="grid grid--2-cols feature">
                     <div>
-                        <h3 className="header card__A">Aerolíneas - Boletos de Avion</h3>
+                        <h3 className="header card__A">Aerolíneas - Boletos de Avion</h3><br/>
                         <p className="feature__text">
                         Los Boletos de Avión desde la perspectiva del viajero esencialmente se clasifican en Vuelos Nacionales y Vuelos Internacionales, los primeros habitualmente son distribuidos por Aerolíneas de Bajo Costo cuyo modelo de negocio es el optimizar sus ingresos controlando sus gastos, este es por ejemplo el caso de Volaris e Interjet quienes NO ofrecen sus productos y servicios a mercado abierto utilizando un Globalizador o GDS.
                         <br></br><br></br>
@@ -17,7 +27,7 @@ const Aerolinea = () => {
                     <picture className="grid__image">
                         <source
                         type="image/png"
-                         srcset="https://i.postimg.cc/hGMrBgcQ/sprite2.png" />
+                         srcSet="https://i.postimg.cc/hGMrBgcQ/sprite2.png" />
                          <img className="media__image" src="https://i.postimg.cc/hGMrBgcQ/sprite2.png" alt="easy info" />
                     </picture>
                 </article>            
@@ -27,63 +37,35 @@ const Aerolinea = () => {
                 <section className="grid__brandsSection container">
                     <div className="grid__brands">
                         <div className="grid__header header__brands"><br></br><br></br>Aerolíneas Nacionales:</div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/G2d1WYWy/aeromexico.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/FRpQNzvn/interjet.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/3wgTf9ch/vivaaerobus.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/cCJGHW41/volaris.jpg" alt="easy info" />
-                        </div>
+                        {this.state.aerolineasNacionales.map(aerolineNacional => (
+                           <div key={aerolineNacional._id} className="grid__brandsBox">
+                              <a href={aerolineNacional.siteURL}target="_blank"><img src={aerolineNacional.imageURL} alt={aerolineNacional.altID} /></a>
+                           </div>
+                        ))}
+                    </div>        
+                </section>
+                <section className="grid__brandsSection container">
+                    <div className="grid__brands">
+                        <div className="grid__header header__brands"><br></br><br></br>Aerolíneas Internacionales:</div>
+                        {this.state.aerolineasInter.map(aerolineaInter => (
+                           <div key={aerolineaInter._id} className="grid__brandsBox">
+                              <a href={aerolineaInter.siteURL}target="_blank"><img src={aerolineaInter.imageURL} alt={aerolineaInter.altID} /></a>
+                           </div>
+                        ))}
                     </div>        
                 </section>
                 <section className="grid__brandsSection container">
                     <div className="grid__brands">
                         <div className="grid__header header__brands"><br></br><br></br>Aerolíneas Internacionales - Bajo Costo:</div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/vT1MhMRq/air-Transat.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/DzBTKmnp/allegiant.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/x1VYvW65/easyJet.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/WzQVfKT2/frontier.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/v8jGB19p/jetBlue.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/ZKd4yTx0/porter.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/ht8nppwB/southwest.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/yNVH504S/spirit.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/tTJHRygq/suncountry.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/KjgSLNLC/sunwing.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/LhKdV135/virgin.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/44KmBR1R/wesJet.jpg" alt="easy info" />
-                        </div>
+                        {this.state.aerolineasInterBajoCosto.map(aerolineaInterBajoCosto => (
+                           <div key={aerolineaInterBajoCosto._id} className="grid__brandsBox">
+                              <a href={aerolineaInterBajoCosto.siteURL}target="_blank"><img src={aerolineaInterBajoCosto.imageURL} alt={aerolineaInterBajoCosto.altID} /></a>
+                           </div>
+                        ))}
                     </div>        
                 </section>
         </>
-    );
+    );}
 };
 
 export default Aerolinea;

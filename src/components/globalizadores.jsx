@@ -1,12 +1,20 @@
-import React from "react";
+import React, { Component } from "react";
+import { getGlobalizador } from "../services/fakeGDS";
 
-const Global = () => {
+class Global extends Component  {
+    state = {
+        globalizadores: []
+    }
+    componentDidMount() {
+        this.setState({globalizadores:getGlobalizador()})
+    }
+    render() {
     return(
         <>
             <section className="block__B container">
                 <article className="grid grid--2-cols feature">
                     <div>
-                        <h3 className="header card__A">Globalizadores </h3>
+                        <h3 className="header card__A">Globalizadores </h3><br/>
                         <p className="feature__text">
                             Los Globalizadores o GDS (Global Distribution System) por sus siglas en inglés son los sistemas de comercialización por excelencia de Boletos de Avión, estos sistemas concentran la oferta de Destinos Turísticos de casi todas las Aerolíneas del planeta.<br/><br/>
                             La función principal de los Globalizadores o GDS es centralizar la operativa de Aerolíneas Nacionales e Internacionales en un solo sistema; la idea es poner a disposición de millones de usuarios la oferta de Boletos de Avión y Destinos Turísticos de forma sencilla y ordenada para que el usuario sea capaz de:
@@ -32,7 +40,7 @@ const Global = () => {
                     <picture className="grid__image">
                         <source
                         type="image/png"
-                         srcset="https://i.postimg.cc/Dz7gHmkK/sprite.png" />
+                         srcSet="https://i.postimg.cc/Dz7gHmkK/sprite.png" />
                          <img className="media__image" src="https://i.postimg.cc/Dz7gHmkK/sprite.png" alt="easy info" />
                     </picture>
                 </article>            
@@ -42,19 +50,15 @@ const Global = () => {
                 <section className="grid__brandsSection container">
                     <div className="grid__brands">
                         <div className="grid__header header__brands">Los globalizadores más importantes del planeta son:</div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/XvzbQrXs/amadeus.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/0ySD8S1w/sabre.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/q7dng7pZ/travelport.jpg" alt="easy info" />
-                        </div>
+                        {this.state.globalizadores.map(globalizador => (
+                           <div key={globalizador._id} className="grid__brandsBox">
+                              <a href={globalizador.siteURL}target="_blank"><img src={globalizador.imageURL} alt={globalizador.altID} /></a>
+                           </div>
+                        ))}
                     </div>        
                 </section>
         </>
-    );
+    );}
 };
 
 export default Global;

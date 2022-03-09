@@ -23,7 +23,7 @@ const Media = () => {
                     <a href="#" className="link-arrow">Conozca más</a>
                 </Fade>
             </div>           
-            <Fade bottom><img className="hero__image" src="https://i.postimg.cc/jj3DpRrM/easy-550.webp" alt="easy info" /></Fade>
+            <Fade bottom><img className="hero__image" src="https://i.postimg.cc/HxxtWKkZ/sprite5.png" alt="info entidades turisticas" /></Fade>
            
         </article>
         <article className="grid grid--2-cols feature">
@@ -41,7 +41,7 @@ const Media = () => {
                     <a href="#" className="link-arrow">Conozca más</a>
                 </Fade>
             </div>            
-            <Fade top><img className="hero__image" src="https://i.postimg.cc/jj3DpRrM/easy-550.webp" alt="easy info" /></Fade>            
+            <Fade top><img className="hero__image" src="https://i.postimg.cc/hGMrBgcQ/sprite2.png" alt="info turismo global" /></Fade>            
         </article>
     </section>
     );

@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
+import {getOTAs} from '../services/fakeOTA';
 
-const OnlineAgency = () => {
+class OnlineAgency extends Component {
+    state = {
+        otas: []
+    };
+
+    componentDidMount() {
+      this.setState({otas:getOTAs()})
+    };
+    render(){
     return(
         <>
             <section className="block__B container">
                 <article className="grid grid--2-cols feature">
                     <div>
-                        <h3 className="header card__A">ota - Online travel agency </h3>
+                        <h3 className="header card__A">ota - Online travel agency </h3><br/>
                         <p className="feature__text">
                         Las Agencias de Viaje Online o también conocidas como OTAs por sus siglas en Inglés son promotoras de Destinos Turísticos y Boletos de Avión que llevan a cabo sus ventas por Internet, estos organismos ofrecen sus Productos y Servicios Turísticos los 7 días de la semana las 24 horas del día.
                         </p>
@@ -43,7 +52,7 @@ const OnlineAgency = () => {
                     <picture className="grid__image">
                         <source
                         type="image/png"
-                        srcset="https://i.postimg.cc/T15qgDmn/sprite3.png" />
+                        srcSet="https://i.postimg.cc/T15qgDmn/sprite3.png" />
                          <img className="media__image" src="https://i.postimg.cc/T15qgDmn/sprite3.png" alt="easy info" />
                     </picture>
                 </article>            
@@ -52,75 +61,15 @@ const OnlineAgency = () => {
                
                 <section className="grid__brandsSection container">
                     <div className="grid__brands">
-                        
-                        
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/L4JdYZqk/cheap.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/zBqMGVsh/cheapAir.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/tTDcZ9bM/cheap-Tickets.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/PJxR10rr/dohop.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/sxN0mKvP/ebookers.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/kM1Z7MfV/edreams.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/zGWPwC5W/expedia.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/X7tzyHM4/hoteles.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/jdD12VFM/hotwire.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/xCjxSBmy/ixigo.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/NF5dKTpK/kayak.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/pr4qzT6q/mobissimo.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/4NH8Z6YM/momondo.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/XNz2THYd/opodo.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/RZrg0Wf0/orbitz.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/d0wn8g5P/priceline.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/bwQ3SqH9/skyscanner.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/zf77ppQL/travelocity.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/LX0TF522/webjet.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/WzF7NV1r/wego.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/4yDQn0Y0/wotif.jpg" alt="easy info" />
-                        </div>
+                    {this.state.otas.map(ota => (
+                           <div key={ota._id} className="grid__brandsBox">
+                              <a href={ota.siteURL}target="_blank"><img src={ota.imageURL} alt={ota.altID} /></a>
+                           </div>
+                    ))}                        
                     </div>        
                 </section>
         </>
-    );
+    );}
 };
 
 export default OnlineAgency;

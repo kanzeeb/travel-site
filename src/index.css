@@ -40,6 +40,10 @@ a {
   color: var(--color-background);
   text-decoration: none;
 }
+li a {
+  color: var(--color-text);
+  text-decoration: none;
+}
 
 /* Avatar */
 .avatar {
@@ -138,55 +142,35 @@ a {
 
 .card__container {
   background-color: whitesmoke;
-  border: 1px solid whitesmoke;
   border-radius: 0.4rem;
+  border: 1px solid whitesmoke;
   height: 17rem;
   overflow: hidden;
   text-align: center;
+  top: 10rem;
   width: inherit;
   z-index: 0;
-  top: 10rem;
 }
 .card__box_text {
-  position: relative;
-  text-align: center;
+  color: var(--color-text);
+  font-family: helvetica;
   font-size: 1rem;
   font-weight: 400;
   letter-spacing: 0.4px;
   line-height: 1.4rem;
+  position: relative;
+  text-align: center;
   top: -15rem;
   z-index: -1;
-  font-family: helvetica;
-  color: var(--color-text);
 }
-
 .card__boxA:hover {
-  -webkit-animation-name: MoveDown;
-  animation-name: MoveDown;
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-  transform-style: preserve-3d;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
+  opacity: 0.4;
+  transition-delay: 0.1s;
 }
 .card__boxB:hover {
-  -webkit-animation-name: MoveUp;
-  animation-name: MoveUp;
-  -webkit-animation-duration: 2s;
-  animation-duration: 2s;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-  -webkit-animation-iteration-count: 1;
-  animation-iteration-count: 1;
-  transform-style: preserve-3d;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
+  opacity: 0.4;
+  transition-delay: 0.1s;
 }
-
 @-webkit-keyframes MoveDown {
   0% {
     -webkit-transfor: translate(0, 30px);
@@ -280,6 +264,32 @@ a {
   .card {
     margin: 0;
   }
+  .card__boxA:hover {
+    -webkit-animation-name: MoveDown;
+    animation-name: MoveDown;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    transform-style: preserve-3d;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+  }
+  .card__boxB:hover {
+    -webkit-animation-name: MoveUp;
+    animation-name: MoveUp;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+    transform-style: preserve-3d;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+  }
 }
 /* Cards end*/
 /* Features*/
@@ -304,6 +314,9 @@ a {
   font-weight: bold;
   text-transform: uppercase;
 }
+.link-arrow:hover {
+  color: var(--color-accent);
+}
 .feature {
   gap: 2rem 2rem;
   margin: 2rem 0;
@@ -321,8 +334,8 @@ a {
 /* Footer */
 .footer__container {
   background-color: var(--color-head);
-  width: 100%;
   margin-top: 3.4rem;
+  width: 100%;
 }
 .footer__text {
   color: var(--color-text);
@@ -345,7 +358,9 @@ a {
 
 /* Grids */
 .grid {
+  align-items: center;
   display: grid;
+  justify-content: center;
   padding: 0 2rem;
 }
 .grid__brands {
@@ -430,7 +445,7 @@ a {
   width: 100%;
 }
 .hero__image {
-  width: 100%;
+  width: 70%;
 }
 .hero__bgImage {
   align-items: center;
@@ -496,8 +511,8 @@ a {
 
 .icon {
   height: 40px;
-  width: 40px;
   text-align: left;
+  width: 40px;
 }
 
 .icon--small {
@@ -562,16 +577,19 @@ a {
   display: block;
 }
 .media__image {
-  width: 50%;
-  text-align: center;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 50%;
 }
 /* Media end */
 /* Navbar */
 .nav__a {
   color: var(--color-background);
   text-decoration: none;
+}
+.nav__a:hover {
+  color: var(--color-background);
 }
 .navBar {
   align-items: center;

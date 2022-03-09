@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { getAgenciasDeViajes } from '../services/fakeAgenciasDeViaje'
+class AgenciasViaje extends Component {
+    state = {
+        agenciasDeViaje: []
+    };
 
-const AgenciasViaje = () => {
+    componentDidMount() {
+      this.setState({agenciasDeViaje:getAgenciasDeViajes()})
+    };
+    render() {
     return (
         <>
             <section className="block__B container">
                 <article className="grid grid--2-cols feature">
                     <div>
-                        <h3 className="header card__A">Agencias de viaje </h3>
+                        <h3 className="header card__A">Agencias de viaje </h3><br/>
                         <p className="feature__text">
                         Las Agencias de Viaje son las Entidades Turísticas de Mayor tradición en el Sector Turismo, por lo regular son pequeñas o medianas empresas PYME legalmente constituidas que como fuente de negocio promueven Destinos Turísticos Nacionales e Internacionales.
                         <br/> <br/> 
@@ -17,28 +25,44 @@ const AgenciasViaje = () => {
                         </p>
                         <ul>
                             <li className="feature__text">
-                            Asociación Nacional de Agencias de Viaje (ANAV)
+                             <a href='https://anav.com.mx/' target='_blank' rel="noopener noreferrer">
+                              Asociación Nacional de Agencias de Viaje (ANAV)
+                             </a>
                             </li>
                             <li className="feature__text">
-                            Consejo Nacional Empresarial Turístico (CNET)
+                             <a href='https://www.cnet.org.mx/' target='_blank' rel="noopener noreferrer">
+                              Consejo Nacional Empresarial Turístico (CNET)
+                             </a>
+                            </li>
+                            <li className="feature__text" >
+                             <a href='https://www.amait.org.mx/' target='_blank' rel="noopener noreferrer">
+                              Abastecedores Turísticos (AMAIT)
+                             </a>
                             </li>
                             <li className="feature__text">
-                            Abastecedores Turísticos (AMAIT)
+                             <a href='https://amdetur.org.mx/' target='_blank' rel="noopener noreferrer">
+                              Asociación Mexicana de Desarrolladores Turísticos (AMDETUR)
+                             </a>
                             </li>
                             <li className="feature__text">
-                            Asociación Mexicana de Desarrolladores Turísticos (AMDETUR)
+                             <a href='https://www.amhm.org/' target='_blank' rel="noopener noreferrer">
+                              Asociación Mexicana de Hoteles y Moteles (AMHM)            
+                             </a>
                             </li>
                             <li className="feature__text">
-                            Asociación Mexicana de Hoteles y Moteles (AMHM)
+                             <a href='https://www.viajesyturismoaldia.com/organismos-de-turismo/paises/mexico/confederacion-nacional-de-asociaciones-de-agencias-de-viajes-de-mexico-connav/' target='_blank'>
+                              Confederación Nacional de Asociaciones de Agencias de Viajes (CONAAV)
+                             </a>
                             </li>
                             <li className="feature__text">
-                            Confederación Nacional de Asociaciones de Agencias de Viajes de México (CONAAV)
+                             <a href='https://www.concanaco.com.mx/' target='_blank' rel="noopener noreferrer">
+                              Confederación de Cámaras Nacionales de Comercio, Servicios y Turismo (CONCANACO-SERVYTUR)
+                             </a>
                             </li>
                             <li className="feature__text">
-                            Confederación de Cámaras Nacionales de Comercio, Servicios y Turismo (CONCANACO-SERVYTUR)
-                            </li>
-                            <li className="feature__text">
-                            Confederación Nacional Turística (A.C.,CNT)
+                             <a href='https://www.fematur.com/' target='_blank' rel="noopener noreferrer">
+                             Federación Mexicana de Asociaciones Turísticas (FEMATUR)
+                             </a>
                             </li>
                         </ul>
                         <p className="feature__text">
@@ -58,37 +82,15 @@ const AgenciasViaje = () => {
                
                 <section className="grid__brandsSection container">
                     <div className="grid__brands">                        
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/mgKJ07QZ/auto-Travel.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/hvKH2gV9/blueSky.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/4ywjMM1j/bojorque-Viajes.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/kMcrB6dw/ibero-Mexico.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/Hssq5YYm/mega-Travel.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/wTfSQCMm/tornare-Travel.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/2S1gc0LX/viajes-Fama.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/bvbW8dTx/viajes-Real.jpg" alt="easy info" />
-                        </div>
-                        <div className="grid__brandsBox">
-                            <img src="https://i.postimg.cc/bJhMv8CK/viajes-Turquesa.jpg" alt="easy info" />
-                        </div>
+                        {this.state.agenciasDeViaje.map(agenciaDeViaje => (
+                           <div key={agenciaDeViaje._id} className="grid__brandsBox">
+                              <a href={agenciaDeViaje.siteURL}target="_blank"><img src={agenciaDeViaje.imageURL} alt={agenciaDeViaje.altID} /></a>
+                           </div>
+                        ))}
                     </div>        
                 </section>
         </>
-    );
+    );}
 };
 
 export default AgenciasViaje;
